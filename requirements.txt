@@ -1,4 +1,4 @@
 #python dependencies
 streamlit
 pandas
-detoxify
+transformers
