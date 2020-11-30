@@ -7,13 +7,13 @@ import pandas as pd
 import altair as alt
 
 '''
-# Warcraft Forum Shitshow Detector 💩
+# Warcraft Forum Shitshow Detector 🔎
 
 The World of Warcraft is a magical one, full of brave and noble knights. 🧙‍♂️🧝‍♀️
 
 That the players themselves embody these attributes is evident in the official forums, 
 where the community gathers to welcome announcements from the development team with joy and gratitude, 
-and engages in philosophical discussions ...no, actually it  is a *shitshow* 💩
+and engages in philosophical discussions ...no, actually it  is a *Shitshow* 💩
 
 To protect yourself from these verbal horrors, you can check the atmosphere here first.
 '''
