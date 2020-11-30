@@ -35,6 +35,12 @@ def get_classifier(id):
 def get_post(post_id):
   return requests.get('https://us.forums.blizzard.com/en/wow/posts/%s.json' % post_id).json()
 
+@st.cache(show_spinner=False)
+def showBalloons():
+  # display only once, by caching the function
+  st.balloons()
+  pass
+
 # Load blue posts: 
 #     US = https://us.forums.blizzard.com/en/wow/groups/blizzard-tracker/posts.json
 #     EU = https://eu.forums.blizzard.com/en/wow/groups/blizzard-tracker/posts.json
@@ -127,7 +133,7 @@ try:
 
   progress_wrapper.empty()
   chart
-  st.balloons()
+  showBalloons()
 except BaseException as e:
   st.error('Somethiong went wrong, please try a diferent thread')
   st.exception(e)
