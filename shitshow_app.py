@@ -62,7 +62,7 @@ last_blue_posts = getPosts()[['title', 'url']].head(5)
 last_blue_posts.loc[len(last_blue_posts)] = ['Enter an URL 🔗', None]
 
 title = st.radio( 
-  "Entern an URL, or pick one of the most recent developer posts:", last_blue_posts)
+  "Enter an URL, or pick one of the most recent developer posts:", last_blue_posts)
 
 url = last_blue_posts.loc[last_blue_posts['title'] == title]['url'].iloc[0]
 if url is None:
@@ -118,7 +118,8 @@ try:
     x=alt.X('rank:O', title=None),
     y=alt.Y('sentiment:N', title=None),
     text='emoji:N',
-    tooltip='text'
+    tooltip='text',
+    href='url'
   ).transform_calculate(
       emoji="{'POSITIVE': '😀', 'NEGATIVE': '💩'}[datum.sentiment]"
   ).transform_window(
