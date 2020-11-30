@@ -2,5 +2,5 @@
 streamlit
 pandas
 transformers
-pytorch
+torch
 altair
