@@ -1,3 +1,4 @@
+from os import error
 import requests
 from urllib.parse import urlparse
 
@@ -62,12 +63,12 @@ last_blue_posts = getPosts()[['title', 'url']].head(5)
 last_blue_posts.loc[len(last_blue_posts)] = ['Enter an URL 🔗', None]
 
 title = st.radio( 
-  "Enter an URL, or pick one of the most recent developer posts:", last_blue_posts)
+  "Enter an URL, or pick one of the most recent developer posts:", last_blue_posts, index=5)
 
 url = last_blue_posts.loc[last_blue_posts['title'] == title]['url'].iloc[0]
 if url is None:
   st.info('The model can only judge English posts.')
-  url = st.text_input('URL')
+  url = st.text_input('URL', value="https://us.forums.blizzard.com/en/wow/t/redeemed-soul/737747")
 else:
   # https://us.forums.blizzard.com/en/wow/t/<thread_id>.json
   url = 'https://us.forums.blizzard.com/en/wow'+url
@@ -106,7 +107,7 @@ try:
     post_progress.progress((i+1)/len(post_ids))
     if results[0]['score'] > 0.75:
       post_results.append({
-        'text': post_text,
+        'text': post['raw'],
         'url': 'https://us.forums.blizzard.com/en/wow/p/%s' % post['id'],
         'sentiment': results[0]['label'],
         'score': results[0]['score']
@@ -136,5 +137,6 @@ try:
   chart
   showBalloons()
 except BaseException as e:
-  st.error('Somethiong went wrong, please try a diferent thread')
-  st.exception(e)
+  st.error('Somethiong went wrong, terribly wrong. Please try a diferent thread.')
+  from PIL import Image
+  st.image(Image.open('error.jpg'), use_column_width=True)
